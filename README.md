@@ -1,6 +1,6 @@
 # Base para portal Wi-Fi para ESP32 usando ESP-IDF
 
-Este projeto demonstra como criar um portal Wi-Fi usando o ESP32 e o framework ESP-IDF. O portal Wi-Fi permite que os usuários se conectem a um ponto de acesso criado pelo ESP32 para configurar as credenciais de Wi-Fi. Pode servir de base para projetos que precisam de uma configuração inicial de rede sem fio, como dispositivos IoT.
+Este projeto demonstra como criar um [portal Wi-Fi](https://en.wikipedia.org/wiki/Captive_portal) usando o ESP32 e o framework ESP-IDF. O portal Wi-Fi permite que os usuários se conectem a um ponto de acesso criado pelo ESP32 para configurar as credenciais de Wi-Fi. Pode servir de base para projetos que precisam de uma configuração inicial de rede sem fio, como dispositivos IoT.
 
 ## Funcionalidades
 - Criação de um ponto de acesso (AP) para configuração.
