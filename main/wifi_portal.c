@@ -49,9 +49,11 @@ static esp_err_t root_get_handler(httpd_req_t *req) {
     esp_wifi_scan_get_ap_num(&ap_count);
     if (ap_count > 10) ap_count = 10;
     number = ap_count;
+    printf("Buscando redes wifi\n");
     if (number > 0) esp_wifi_scan_get_ap_records(&number, ap_info);
     httpd_resp_send_chunk(req, index_html_prefix, strlen(index_html_prefix));
     if (number == 0) {
+        printf("Nenhuma rede encontrada\n");
         httpd_resp_send_chunk(req, "<option value=''>Nenhuma rede encontrada</option>", -1);
     } else {
         for (int i = 0; i < number; i++) {
@@ -189,11 +191,9 @@ void wifi_portal_init(void) {
 
     wifi_config_t ap_cfg = { .ap = { .ssid=SSID_PORTAL, .channel=1, .authmode=WIFI_AUTH_OPEN, .max_connection=4 } };
     
+    esp_wifi_set_mode(WIFI_MODE_APSTA);
     if (has_creds) {
-        esp_wifi_set_mode(WIFI_MODE_APSTA);
         esp_wifi_set_config(WIFI_IF_STA, &sta_cfg);
-    } else {
-        esp_wifi_set_mode(WIFI_MODE_AP);
     }
     esp_wifi_set_config(WIFI_IF_AP, &ap_cfg);
     esp_wifi_start();
